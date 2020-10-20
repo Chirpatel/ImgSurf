@@ -1,0 +1,14 @@
+.header{
+    background-color: black;
+    font-size: 20px;
+    padding:10px;
+}
+
+.header a{
+    color: white;
+    text-decoration:none;
+}
+.Home{
+    float:right;
+    margin-right: 20px;
+}
