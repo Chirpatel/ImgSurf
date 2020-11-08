@@ -1,102 +1,92 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  body {
-    margin: 0;
-  }
-  
-  header {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 1.5em;
-    line-height: 82px;
-    text-align: center;
-  }
-  
-  .gallery {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-  }
-  
-  .column {
-    width: 24vw;
-  }
-  
-  .imgframe {
-    overflow: hidden;
-    position: relative;
-    margin-bottom: 5px;
-    border-radius: 10px;
-    box-shadow: 0px 1px 3px 0px #00000070;
-  }
-  
-  .mainimg {
-    position: absolute;
-    left: -50%;
-  }
-  
-  .actions {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    padding: 20px;
-    background: white;
-    display: flex;
-    justify-content: space-between;
-    font-family: 'montserrat';
-  }
-  
-  .actions button {
-    background: white;
-    border: none;
-    cursor: pointer;
-    font-family: 'montserrat';
-  }
-  
-  .pop {
-    height: 90vh!important;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 80vw;
-    z-index: 1000;
-    background: white;
-    transform: translate(-50%, -50%);
-  }
-  
-  .show {
-    display: block;
-    position: absolute;
-    right: 0;
-    background: white;
-    padding: 10px;
-    border-radius: 0px 10px 0px 10px;
-    box-shadow: 0 0 3px 0 #000000a1;
-    font-family: montserrat;
-    font-weight: bold;
-    user-select: none;
-    cursor: pointer;
-  }
-  
-  .close {
-    display: none;
-  }
-  
-  .hide {
-    display: none;
-  }
-  
-  .mainimgpop {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  @media screen and (max-width: 800px) {
-    .column {
-      width: 45vw;
-    }
-  }
+.row {
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE 10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  -ms-flex: 33%; /* IE 10 */
+  flex: 33%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+}
+
+.imgView{
+  width:100%;
+}
+
+.popup {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0,0,0, 0.5);
+}
+.popup_inner {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  top: 25%;
+  bottom: 25%;
+  margin: auto;
+  background: white;
+  height:400px;
+  width: 400px;
+}
+.showImage{
+  width: calc(100%);
+  height: calc(100% - 75px);
+  padding: 20px 20px 0px 20px;
+}
+
+/* Style buttons */
+.downloadbtn {
+  background-color: DodgerBlue;
+  font-size: 20px;
+  margin: 10px auto;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  border-radius: 10px;
+  display: block;
+}
+
+/* Darker background on mouse-over */
+.downloadbtn:hover {
+  background-color: RoyalBlue;
+  transition:none;
+}
+
+.closebtn{
+  position: absolute;
+  top: -35px;
+  right: -10px;
+  padding: 10px;
+  color: white;
+  background-color: transparent;
+  font-size: 20px;
+  outline:none;
+  border:none;
+}
+.closebtn:hover{
+  transform:scaleX(1.05);
+  cursor: pointer;
+}

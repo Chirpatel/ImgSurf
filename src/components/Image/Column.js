@@ -1,12 +1,16 @@
 import React from 'react'
 import ImgFrame from './ImgFrame'
 
-function Column({ images }) {
+function Column({clk, images,img }) {
+  //console.log(images);
+
   return (
+    
     <div className="column">
-      {images.map((img, i) => {
-        return <ImgFrame key={i} src={img.src} h={img.height} author={img.author} />
+      {images.map((img,i)=>{
+        return <ImgFrame key ={i} src={img.urls} author={img.user.username} img={img} clk={clk}/>
       })}
+        
     </div>
   )
 }

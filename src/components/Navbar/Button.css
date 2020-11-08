@@ -1,6 +1,6 @@
 
 
-.btn{
+.navbtn{
     padding:8px 20px;
     border-radius: 4px;
     outline:none;
@@ -18,7 +18,7 @@
     display: block;
 }
 
-.btn:hover{
+.navbtn:hover{
     padding:8px 20px;
     transition: all 0.3s ease-out;
     transition: 250ms;
@@ -27,9 +27,9 @@
     text-decoration: none;
 }
 
-.btn--primary{background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
+.navbtn--primary{background-image: linear-gradient(to right, #232526 0%, #414345  51%, #232526  100%)}
 
-.btn--medium{
+.navbtn--medium{
     padding: 8px 20px;
     border-radius: 4px;
     font-size: 18px;

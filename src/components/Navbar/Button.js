@@ -9,7 +9,7 @@ export const Button =({
     buttonSize
 }) =>{
     return (
-        <button className={`btn btn-signup btn--primary btn--medium`} onClick={onClick} type={type}>
+        <button className={`navbtn navbtn-signup navbtn--primary navbtn--medium`} onClick={onClick} type={type}>
             {children}
         </button>
     )
