@@ -24,7 +24,7 @@ function Navbar(){
                     })}
                     
                 </ul>
-                <Link className={"signupLink"} to="/signup"><Button>Sign Up</Button></Link>
+                <Link className={"signupLink"} to="/signup"><Button className={"btn-signup"}>Sign Up</Button></Link>
 
             </nav>
         );

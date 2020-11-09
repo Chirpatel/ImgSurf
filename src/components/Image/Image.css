@@ -22,6 +22,23 @@
   width:100%;
 }
 
+.img-container{
+  position: relative;
+}
+.imgOverlayer{
+  padding: 2px 5px;
+  background-color: black;
+  width: 100%;
+}
+.imgbottom{
+  color: white;
+}
+.username{
+  float:right;
+}
+.username:hover{
+  cursor: pointer;
+}
 .popup {
   position: fixed;
   width: 100%;
@@ -50,30 +67,6 @@
   padding: 20px 20px 0px 20px;
 }
 
-
-.downloadbtn {
-  background-color: DodgerBlue;
-  font-size: 20px;
-  margin: 10px auto;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  padding: 15px 45px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: 0.5s;
-  background-size: 200% auto;
-  color: white;
-  box-shadow: 0 0 20px #eee;
-  border-radius: 10px;
-  display: block;
-}
-
-
-.downloadbtn:hover {
-  background-color: RoyalBlue;
-  transition:none;
-}
 
 .closebtn{
   position: absolute;

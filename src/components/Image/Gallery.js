@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react'
 import Column from './Column'
-
+import {Button} from "../Navbar/Button";
 const getColumns = (imgarr,col)=>{
   //console.log(imgarr);
   var images=[];
@@ -57,7 +57,7 @@ const getColumns = (imgarr,col)=>{
         <div className={'popup_inner'}>
           <img className={"showImage"} src={showImageData.src} alt="ViewImage"/>
           <div>
-            <button className="btn downloadbtn" onClick={() => {openInNewTab(showImageData.download)}}><i className="fa fa-download"></i> Download</button>
+            <Button cName={"dbtn"} onClick={() => {openInNewTab(showImageData.download)}}><i className="fa fa-download"></i> Download</Button>
             <button className="closebtn" onClick={closePopup}><i className="fa fa-times"></i></button>
           </div>
         </div>

@@ -5,11 +5,10 @@ export const Button =({
     children,
     type,
     onClick,
-    buttonStyle,
-    buttonSize
+    cName
 }) =>{
     return (
-        <button className={`navbtn navbtn-signup navbtn--primary navbtn--medium`} onClick={onClick} type={type}>
+        <button className={`navbtn navbtn-signup navbtn--primary navbtn--medium ${cName}`} onClick={onClick} type={type}>
             {children}
         </button>
     )

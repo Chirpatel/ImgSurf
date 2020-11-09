@@ -17,7 +17,9 @@
     border-radius: 10px;
     display: block;
 }
-
+.dbtn{
+    margin: 5px auto;
+}
 .navbtn:hover{
     padding:8px 20px;
     transition: all 0.3s ease-out;
