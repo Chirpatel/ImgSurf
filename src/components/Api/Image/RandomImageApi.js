@@ -1,5 +1,5 @@
 import axios from 'axios';
-const UnsplashApi = async()=>{
+const randomImageApi = async()=>{
   var url = `https://api.unsplash.com/photos/random?count=30&content_filter=high&client_id=${process.env.REACT_APP_UNSPLASH_SECRET_KEY}`
     var config = {
       url: url,
@@ -20,4 +20,4 @@ const UnsplashApi = async()=>{
       return data;
       
 }
-export default UnsplashApi;
+export default randomImageApi;

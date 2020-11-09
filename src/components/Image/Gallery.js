@@ -53,7 +53,6 @@ const getColumns = (imgarr,col)=>{
           })
 
       }
-      <button onClick={togglePopup.bind(this)}>show popup</button>
       <div className={'popup'} style={showPopup ? display : hide}>
         <div className={'popup_inner'}>
           <img className={"showImage"} src={showImageData.src} alt="ViewImage"/>

@@ -6,7 +6,7 @@
   padding: 0 4px;
 }
 
-/* Create two equal columns that sits next to each other */
+
 .column {
   -ms-flex: 33%; /* IE 10 */
   flex: 33%;
@@ -50,7 +50,7 @@
   padding: 20px 20px 0px 20px;
 }
 
-/* Style buttons */
+
 .downloadbtn {
   background-color: DodgerBlue;
   font-size: 20px;
@@ -69,7 +69,7 @@
   display: block;
 }
 
-/* Darker background on mouse-over */
+
 .downloadbtn:hover {
   background-color: RoyalBlue;
   transition:none;
@@ -89,4 +89,32 @@
 .closebtn:hover{
   transform:scaleX(1.05);
   cursor: pointer;
+}
+.search-container {
+  overflow: hidden;
+  text-align:center
+}
+.searchbtn {
+  padding: 8px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.searchbtn:hover {
+  background: #ccc;
+}
+.search-container input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+.end{
+  text-align: center;
+  margin: 20px auto;
+  font-size: 20px;
 }

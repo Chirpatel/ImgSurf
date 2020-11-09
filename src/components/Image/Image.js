@@ -5,16 +5,64 @@ import React, {
 import Gallery from './Gallery';
 import './Image.css'
 //import getData from './Data';
-import UnsplashApi from '../Api/Image/Api';
+import randomImageApi from '../Api/Image/RandomImageApi';
+import searchImageApi from '../Api/Image//SearchImageApi';
+import Search from '../Search/Search'
 
 
-
-function Image() {
+function Image({query,searched}) {
+  /*For Searching */
+  const [searchQuery,setQuery] = useState({query:"",search:false,page:0,isEnd:false});
+  const [isLoading,setLoading] = useState(false);
+  const [isFirstPage,setFirstPage] = useState(false);
+  
+  /*function setSearch(){
+    setQuery({query:query,search:true,page:1});
+    console.log("Set Query")
+    setFirstPage(false)
+  }*/
+  useEffect(() => {
+    function setSearch(){
+      setQuery({query:query,search:true,page:1});
+      //console.log("Set Query")
+      setFirstPage(false)
+    }
+    if(searched){
+      setSearch();
+    }
+  },[query,searched]);
+  /* Initial Call */
   var [data, setData] = useState([]);
+  useEffect(() => {
+    const Data = async () => {
+      if(!isFirstPage && !isLoading){
+        //console.log("First Function...................................................")
+        if(searchQuery.search ){
+          setLoading(true)
+          let tempdata = await searchImageApi({query:searchQuery.query,page:searchQuery.page+1});
+          setData(tempdata.results);
+          setQuery({...searchQuery,totalpage:searchQuery.totalpage,page:searchQuery.page+1})
+          setLoading(false)
+          setFirstPage(true)
+          //console.log("Search")
+        }
+        else if(!searchQuery.search){
+          setLoading(true)
+          setData(await randomImageApi());
+          setLoading(false)
+          setFirstPage(true)
+          //console.log("Random");
+        }
+        //console.log("....................................................................")
+      }
+    }
+    Data();
+  }, [setData,searchQuery,setQuery,isLoading,setLoading,isFirstPage,setFirstPage])
 
+  /* Infinite Scroll */
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+      return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   const [isBottom, setIsBottom] = useState(false);
 
@@ -28,7 +76,25 @@ function Image() {
   }
   useEffect(() => {
     const addData = async () => {
-      setData([...data, ...await UnsplashApi()]);
+      if(searchQuery.search===true && !isLoading){
+        if(searchQuery.page>=searchQuery.totalpage){
+          setQuery({...searchQuery,isEnd:true});
+        }
+        else{
+          setLoading(true);
+          let tempdata = await searchImageApi({query:searchQuery.query,page:searchQuery.page+1});
+          //console.log("Infinite Scroll: ",tempdata.results);
+          setData([...data, ...tempdata.results]);
+          setQuery({...searchQuery,page:searchQuery.page+1})
+          setLoading(false)
+        }
+      }
+      else if(!searchQuery.search && !isLoading){
+        setLoading(true)
+        setData([...data, ...await randomImageApi()]);
+        setLoading(false)
+      }
+      
     }
     const addItems = () => {
       addData();
@@ -37,24 +103,25 @@ function Image() {
     if (isBottom) {
       addItems();
     }
-  }, [isBottom, data, setData]);
+  }, [isBottom, data, setData,searchQuery,setQuery,isLoading]);
 
 
-
-  useEffect(() => {
-    const Data = async () => {
-      setData(await UnsplashApi());
-    }
-    Data();
-
-  }, [setData])
+  //console.log("Query: ",searchQuery);
   //console.log(data);
   //let data = getData();
+
   try {
 
     return ( 
       <div className = "gallery" >
-        <Gallery imgarr = {data}/> 
+        <Search q={query} searched={searched}/>
+        <Gallery imgarr = {data}/>
+        {searchQuery.isEnd &&
+          <div className={"end"}>Etc...</div>
+        }
+        {isLoading&&
+          <div >Loading...</div>
+        }
       </div>
     )
   } catch (err) {

@@ -1,35 +1,33 @@
-import React, { Component } from 'react'
+import React, {useState } from 'react'
 import {MenuItems} from "./MenuItems";
 import './Navbar.css';
 import {Button} from "./Button";
-class Navbar extends Component{
-    state = { clicked:false }
-    handleClick= ()=>{
-        this.setState({ clicked: !this.state.clicked })
+import {Link} from "react-router-dom";
+function Navbar(){
+    const [clicked,setClick] = useState(false);
+    const handleClick= ()=>{
+      setClick(!clicked )
     }
-    render(){
         return(
             <nav className="NavbarItems" >
-                <h1 className="navbar-logo">imgSurf <i className="fas fa-camera"></i></h1>
-                <div className="menu-icon" onClick={this.handleClick}>
-                    <i className={this.state.clicked ? 'fas fa-times':'fas fa-bars'}></i>
+                <h1 className="navbar-logo" onClick={()=>{window.location='/'}}>imgSurf <i className="fas fa-camera"></i></h1>
+                <div className="menu-icon" onClick={handleClick}>
+                    <i className={clicked ? 'fas fa-times':'fas fa-bars'}></i>
                 </div>
-                <ul className={this.state.clicked ? 'nav-menu active':'nav-menu'}>
+                <ul className={clicked ? 'nav-menu active':'nav-menu'}>
                     {MenuItems.map((item, index)=>{
                         return(
                             <li key={index}>
-                                <a className={item.cName} href={item.url}>
-                                {item.title}
-                                </a> 
+                                <Link className={item.cName} to={item.url}>{item.title}</Link>
                             </li>
                         )
                     })}
                     
                 </ul>
-                <Button>Sign Up</Button>
+                <Link className={"signupLink"} to="/signup"><Button>Sign Up</Button></Link>
+
             </nav>
-        )
-    }
+        );
 }
 
 export default Navbar;
