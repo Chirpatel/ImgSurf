@@ -1,6 +1,6 @@
 import React,{useState,useEffect}from 'react';
 const Search = ({q,searched}) =>{
-    console.log("q: ",q,"searched: ",searched);
+    //console.log("q: ",q,"searched: ",searched);
     const [query,setQuery] = useState("");
     function search(e){
         //console.log(e.target.value);
@@ -10,7 +10,7 @@ const Search = ({q,searched}) =>{
     useEffect(() => {
         
         if(searched){
-            console.log("Set Query");
+            //console.log("Set Query");
             setQuery(q);
         }
     }, [setQuery,q,searched])

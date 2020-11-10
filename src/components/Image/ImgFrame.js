@@ -11,11 +11,11 @@ const openInNewTab = (url) => {
 }
   return (
     <div className={"img-container"}>
-      <img className={"imgView"} key={i} src={img.urls.small} alt="ViewImage" onClick = {toggle}/>
+      <img className={"imgView"} key={i} src={img.View} alt="ViewImage" onClick = {toggle}/>
       <div className={"imgOverlayer"}>
         <div className={"imgbottom"}>
-          <i className="fas fa-heart"></i> {img.likes}
-          <span className="username" onClick={() => {openInNewTab(img.user.links.html)}}>{img.user.username}</span>
+          <i className="fas fa-heart"></i> {img.Likes}
+          <span className="username" onClick={() => {openInNewTab(img.AuthorURL)}}>{img.Author}</span>
         </div>
       </div>
       

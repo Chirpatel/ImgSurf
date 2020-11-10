@@ -29,7 +29,7 @@ const getColumns = (imgarr,col)=>{
   },[imgarr])
   function togglePopup(data) {
     //console.log(data);
-    setImageData({src:data.urls.small,author:data.user.name,name:data.alt_description,download:data.urls.raw});
+    setImageData({src:data.View,author:data.Author,name:data.ImageDes,download:data.Download});
     setShowPopup(!showPopup);
   }
   function closePopup(){

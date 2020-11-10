@@ -12,47 +12,57 @@ import Search from '../Search/Search'
 
 function Image({query,searched}) {
   // /*For Searching */
-  const [searchQuery,setQuery] = useState({query:"",search:false,page:0,isEnd:false});
+  const [searchQuery,setQuery] = useState({query:"",search:false,isEnd:false});
   const [isLoading,setLoading] = useState(false);
   const [isFirstPage,setFirstPage] = useState(false);
+  const [pageLoaded,setLoadedPage] = useState(0);
   /*Updating the Query */
   useEffect(() => {
     function setSearch(){
       setQuery({query:query,search:true,page:1});
       setFirstPage(false)
+      setLoadedPage(0)
     }
     if(searched){
       setSearch();
     }
-  },[query,searched]);
+  },[query,searched,setLoadedPage]);
 
   /* Initial Call */
   var [data, setData] = useState([]);
   useEffect(() => {
     const Data = async () => {
       if(!isFirstPage && !isLoading){
-        console.log("First Function...................................................")
+        //console.log("First Function...................................................")
         if(searchQuery.search ){
           setLoading(true)
-          let tempdata = await searchImageApi({query:searchQuery.query,page:searchQuery.page+1});
-          setData(tempdata.results);
-          setQuery({...searchQuery,totalpage:searchQuery.totalpage,page:searchQuery.page+1})
+          let tempdata = await searchImageApi({type:1,query:searchQuery.query,page:pageLoaded+1});
+          //setData(tempdata.data);
+          let tempdata1 = await searchImageApi({type:2,query:searchQuery.query,page:pageLoaded+1});
+          let tempdata2 = await searchImageApi({type:3,query:searchQuery.query,page:pageLoaded+1});
+          //console.log("Searched First Page Called.");
+          setData([...tempdata.data,...tempdata1.data, ...tempdata2.data]);
+          setQuery({...searchQuery,totalpage:tempdata.TotalPage})
           setLoading(false)
           setFirstPage(true)
-          console.log("Search")
+          setLoadedPage(pageLoaded+1)
+          //console.log("Search")
         }
         else if(!searchQuery.search){
           setLoading(true)
-          setData(await randomImageApi());
+          //console.log(await randomImageApi(1,1));
+          setData([ ...await randomImageApi({type:1,page:pageLoaded+1}), ...await randomImageApi({type:2,page:pageLoaded+1}), ...await randomImageApi({type:3,page:pageLoaded+1})]);
+          //setData([...data, ...await randomImageApi({type:3,page:pageLoaded+1})]);
           setLoading(false)
           setFirstPage(true)
-          console.log("Random");
+          setLoadedPage(1)
+         // console.log("Random");
         }
-        console.log("....................................................................")
+        //console.log("....................................................................")
       }
     }
     Data();
-  }, [setData,searchQuery,setQuery,isLoading,setLoading,isFirstPage,setFirstPage])
+  }, [setData,searchQuery,setQuery,isLoading,setLoading,isFirstPage,setFirstPage,data,pageLoaded,setLoadedPage])
 
   /* Infinite Scroll */
   useEffect(() => {
@@ -65,28 +75,32 @@ function Image({query,searched}) {
     const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
     const scrollHeight = (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
     if (scrollTop + window.innerHeight  >= scrollHeight/1.5) {
-      console.log(scrollTop + window.innerHeight,scrollHeight)
+      //console.log(scrollTop + window.innerHeight,scrollHeight)
       setIsBottom(true);
     }
   }
   useEffect(() => {
     const addData = async () => {
       if(searchQuery.search===true && !isLoading){
-        if(searchQuery.page>=searchQuery.totalpage){
+        if(pageLoaded>=searchQuery.totalpage){
           setQuery({...searchQuery,isEnd:true});
         }
         else{
           setLoading(true);
-          let tempdata = await searchImageApi({query:searchQuery.query,page:searchQuery.page+1});
-          console.log("Infinite Scroll: ",tempdata.results);
-          setData([...data, ...tempdata.results]);
-          setQuery({...searchQuery,page:searchQuery.page+1})
+          //console.log("Searched Infinite Page Called.");
+          let tempdata = await searchImageApi({type:1,query:searchQuery.query,page:pageLoaded+1});
+          //console.log("Infinite Scroll: ",tempdata.results);
+          let tempdata1 = await searchImageApi({type:2,query:searchQuery.query,page:pageLoaded+1});
+          let tempdata2 = await searchImageApi({type:3,query:searchQuery.query,page:pageLoaded+1});
+          setData([...data, ...tempdata.data, ...tempdata1.data,...tempdata2.data]);
+          setLoadedPage(pageLoaded+1)
           setLoading(false)
         }
       }
       else if(!searchQuery.search && !isLoading){
         setLoading(true)
-        setData([...data, ...await randomImageApi()]);
+        setData([...data, ...await randomImageApi({type:1,page:pageLoaded+1}), ...await randomImageApi({type:2,page:pageLoaded+1}), ...await randomImageApi({type:3,page:pageLoaded+1})]);
+        setLoadedPage(pageLoaded+1)
         setLoading(false)
       }
       
@@ -98,7 +112,7 @@ function Image({query,searched}) {
     if (isBottom) {
       addItems();
     }
-  }, [isBottom, data, setData,searchQuery,setQuery,isLoading]);
+  }, [isBottom, data, setData,searchQuery,setQuery,isLoading,pageLoaded,setLoading]);
 
 
   //console.log("Query: ",searchQuery);
