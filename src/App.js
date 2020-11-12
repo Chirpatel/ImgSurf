@@ -2,6 +2,9 @@ import React from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Image from './components/Image/Image';
 import Search from './components/Search/Search';
+import Liked from './components/User/Liked';
+import Signup from './components/User/Signup';
+import Login from './components/User/Login';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -21,11 +24,17 @@ function App(){
                 <Route path="/search">
                     <Searching />
                 </Route>
-                <Route path="/">
-                 <Image />
+                <Route path='/liked'>
+                  <Liked />  
                 </Route>
                 <Route path="/signup">
-                  <Image />
+                  <Signup />
+                </Route>
+                <Route path="/login">
+                  <Login />
+                </Route>
+                <Route path="/">
+                 <Image />
                 </Route>
             </Switch>
     </Router>

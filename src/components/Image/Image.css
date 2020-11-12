@@ -33,6 +33,9 @@
 .imgbottom{
   color: white;
 }
+.imgheart{
+  color:red;
+}
 .username{
   float:right;
 }
@@ -58,16 +61,54 @@
   bottom: 25%;
   margin: auto;
   background: white;
-  height:400px;
-  width: 400px;
+  height:420px;
+  width: 420px;
 }
 .showImage{
-  width: calc(100%);
-  height: calc(100% - 75px);
-  padding: 20px 20px 0px 20px;
+  display:block;
+}
+.img-vert{
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.img-hor{
+  width: 372px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.img-div{
+  position: relative;
+  height: 325px;
+  margin: 20px 20px 10px 20px;
+  border: 4px black solid;
+}
+.img-details{
+  color: black;
+}
+.img-details p::first-letter{
+  text-transform: capitalize;
 }
 
-
+.img-details-container{
+  margin: 0px 20px;
+}
+.img-details-des{
+  text-overflow: ellipsis;
+  width: calc(100% - 63px);
+  white-space: nowrap;
+  overflow: hidden;
+}
+.img-details-author:hover{
+  cursor: pointer;
+}
+.dbtn{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
 .closebtn{
   position: absolute;
   top: -35px;

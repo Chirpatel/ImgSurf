@@ -8,8 +8,10 @@ function Navbar(){
     const handleClick= ()=>{
       setClick(!clicked )
     }
+    
         return(
             <nav className="NavbarItems" >
+                
                 <h1 className="navbar-logo" onClick={()=>{window.location='/'}}>imgSurf <i className="fas fa-camera"></i></h1>
                 <div className="menu-icon" onClick={handleClick}>
                     <i className={clicked ? 'fas fa-times':'fas fa-bars'}></i>

@@ -33,7 +33,10 @@ async function dataFormater(type1,type2,data){
                     View: img.urls.small,
                     Author: img.user.username,
                     AuthorURL: img.user.links.html,
-                    Likes: img.likes}]
+                    Likes: img.likes,
+                    w: img.width,
+                    h: img.height,
+                    type:type1}]
             })
         }
         else{
@@ -46,7 +49,10 @@ async function dataFormater(type1,type2,data){
                     View: img.urls.small,
                     Author: img.user.username,
                     AuthorURL: img.user.links.html,
-                    Likes: img.likes}]
+                    Likes: img.likes,
+                    w: img.width,
+                    h: img.height,
+                    type:type1}]
             })
         }
     }
@@ -61,31 +67,25 @@ async function dataFormater(type1,type2,data){
                     View: img.webformatURL,
                     Author: img.user,
                     AuthorURL: `https://pixabay.com/users/${img.user}-${img.user_id}/`,
-                    Likes: img.likes}]
+                    Likes: img.likes,
+                    w: img.imageWidth,
+                    h: img.imageHeight,
+                    type:type1}]
             })
     }
- /*
-Total Page: data.total_results/80
-ImageId: data.photos[0].id
-Download:  data.photos[0].src.original
-View: data.photos[0].src.medium
-Author: data.photos[0].photographer
-AuthorUrl: data.photos[0].photographer_url
-likes: NA data.photos[0].liked ("false") 
- 
- 
- */   
-    
     else{
         apiData={TotalPage: parseInt(data.total_results/80)}
             data.photos.forEach((img)=>{
                 apiDataImg = [...apiDataImg,{ImageId: img.id,
-                    ImageDes: img.src.original,
+                    ImageDes: img.photographer,
                     Download: img.src.original,
                     View: img.src.medium,
                     Author: img.photographer,
                     AuthorURL: img.photographer_url,
-                    Likes: ""}]
+                    Likes: "",
+                    w: img.width,
+                    h: img.height,
+                    type:type1}]
             })
     }
     //console.log(apiDataImg);

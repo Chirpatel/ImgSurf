@@ -1,0 +1,49 @@
+/* SignUp & Login */
+
+.signup-container {
+  }
+.signup-container h1,.login-container h1{
+    margin: 10px;
+}
+.signup-container h6,.login-container h6{
+    margin-top:5px;
+    text-align: center;
+}
+.signup-container p,.login-container p{
+    margin-top: 10px;
+}
+.signup-container input ,.login-container input{
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: 1px solid black;
+    border-radius: 2px;
+  }
+
+.signup-details,.login-details{
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+.signup-container Button,.login-container Button{
+    margin:auto;
+    margin-top:10px;
+}
+.alert-on{
+    color:red;
+    font-size: 10px;
+    display:block;
+}
+.signedup{
+    text-align: center;
+    font-size: 30px;
+}
+.alert-off{
+    display: none;
+}
+.display-off{
+    display: none;
+}
+.display-on{
+    display:block;
+}
