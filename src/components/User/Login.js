@@ -23,6 +23,7 @@ function Login(){
                 var user = JSON.parse(localdata);
                 console.log(user);
                 setislogedIn(true);
+                window.location.href = '/';
             }
         }
         loginCheck();
@@ -82,6 +83,7 @@ function Login(){
                     localStorage.setItem('ImgSurfUserId',JSON.stringify({data:userdetails}));
                     setisErrorEmail1(false);
                     setislogedIn(true);
+                    window.location.href = '/';
                 }
                 else{
                     setisErrorEmail1(true);
@@ -108,6 +110,7 @@ function Login(){
                 <p className={`${isErrorPassword ? "alert-on" : "alert-off"}`}>Password should have min 9 characters.</p>
                 <input type="password" value={user.password} onChange={dataPassword}/>
                 <Button onClick={clickLogin}>Login <i className="fas fa-sign-in-alt"></i></Button>
+                <h6> Not a User <a href="/signup">Sign up</a></h6>
             </div>
             <p className={`signedup ${islogedIn ? "display-on" : "display-off" }` }>Successfully Logged In. </p>
         </div>

@@ -2,10 +2,10 @@
 
 .signup-container {
   }
-.signup-container h1,.login-container h1{
+.signup-container h1,.login-container h1,.liked-image-container h1{
     margin: 10px;
 }
-.signup-container h6,.login-container h6{
+.signup-container h6,.login-container h6,.liked-image-container h6{
     margin-top:5px;
     text-align: center;
 }

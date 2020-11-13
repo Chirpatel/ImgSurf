@@ -55,6 +55,7 @@ function Signup(){
         if(user.email!=="" && !isErrorUsername && !isErrorEmail2 && !isErrorPassword){
             console.log(user);
             setSignup(true);
+            
         }else{
             setSignup(false);
         }
@@ -67,10 +68,11 @@ function Signup(){
             if(userdetails!==undefined){
                 setSignup(false);
                 if(userdetails.value===undefined){
-                    console.log(userdetails);
+                    //console.log(userdetails);
                     localStorage.setItem('ImgSurfUserId',JSON.stringify({data:userdetails}));
                     setisSignup(true);
                     setisErrorEmail1(false);
+                    window.location.href = '/';
                 }else{
                     setisErrorEmail1(true);
                 }

@@ -6,7 +6,7 @@ const randomImageApi = async({type,page})=>{
   //console.log("Type:=================>",type)
   var url = `https://api.unsplash.com/photos/random?count=30&content_filter=high&client_id=${process.env.REACT_APP_UNSPLASH_SECRET_KEY}`
   if(type===2){
-    url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_SECRET_KEY}&image_type=photo&per_page=50&page=${page}`
+    url = `https://pixabay.com/api/?key=${process.env.REACT_APP_PIXABAY_SECRET_KEY}&image_type=photo&per_page=200&page=${page}`
   }
   var config = {
     url: url,

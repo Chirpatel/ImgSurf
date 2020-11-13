@@ -7,7 +7,7 @@ const SignupApi = async ({user}) =>{
     var data = qs.stringify({
     'Email': user.email,
     'Password': user.password,
-    'Username': user.username 
+    'UserName': user.username 
     });
     var config = {
     method: 'post',

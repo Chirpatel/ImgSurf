@@ -5,38 +5,34 @@ import Search from './components/Search/Search';
 import Liked from './components/User/Liked';
 import Signup from './components/User/Signup';
 import Login from './components/User/Login';
+import Logout from './components/User/Logout';
 import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   useRouteMatch,
-  useParams
+  useParams,
+  withRouter 
 } from "react-router-dom";
 
 function App(){
 
   return (
     <div className="App">
-      <Router>
+      <Router forceRefresh={true}>
         <Navbar/>
             <Switch>
                 <Route path="/search">
-                    <Searching />
+                  <Searching />
                 </Route>
-                <Route path='/liked'>
-                  <Liked />  
-                </Route>
-                <Route path="/signup">
-                  <Signup />
-                </Route>
-                <Route path="/login">
-                  <Login />
-                </Route>
-                <Route path="/">
-                 <Image />
-                </Route>
+                <Route path='/liked' exact component={withRouter(Liked)}/>
+                <Route path="/signup" exact component={withRouter(Signup)}/>
+                <Route path="/login" exact component={withRouter(Login)} />
+                <Route path="/logout" exact component={withRouter(Logout)} />
+                <Route path="/" exact component={withRouter(Image)} />
             </Switch>
+            
     </Router>
       </div>
   );

@@ -8,8 +8,8 @@
 
 
 .column {
-  -ms-flex: 33%; /* IE 10 */
-  flex: 33%;
+  -ms-flex: 25%; /* IE 10 */
+  flex: 25%;
   padding: 0 4px;
 }
 
@@ -32,6 +32,9 @@
 }
 .imgbottom{
   color: white;
+}
+.imgbottom .fa-heart:hover{
+  cursor: pointer;
 }
 .imgheart{
   color:red;

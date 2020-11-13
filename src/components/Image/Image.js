@@ -124,7 +124,7 @@ function Image({query,searched}) {
     return ( 
       <div className = "gallery" >
         <Search q={query} searched={searched}/>
-        <Gallery imgarr = {data}/>
+        <Gallery imgarr = {data} liked={[]}/>
         {searchQuery.isEnd &&
           <div className={"end"}>Etc...</div>
         }

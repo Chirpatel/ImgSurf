@@ -1,25 +1,40 @@
-import React,{useState} from  'react';
+import React,{useState,useEffect} from  'react';
 
 
-function ImgFrame({clk,img,i,addremovelike}) {
+function ImgFrame({clk,img,i,addremovelike,liked}) {
+  //console.log("Imgframe");
 let [isLiked, setLiked] = useState(false);
   function toggle(){
-  clk(img);
+    clk(img);
   }
-
+  useEffect(()=>{
+    function check(){
+      if(liked.includes(img.ImageId)){
+        setLiked(true);
+      }
+    }
+    check()
+  },[])
+  
+  ;
   const openInNewTab = (url) => {
     const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
     if (newWindow) newWindow.opener = null
   }
   function setIsLiked(){
     if(isLiked){
-      img.Likes--;
-      addremovelike("Remove",{imgId:img.ImageId,type:img.type})
+      if(addremovelike("Remove",{imgId:img.ImageId,type:img.type})){
+        img.Likes--;
+        setLiked(!isLiked);
+      }
     }else{
-      img.Likes++;
-      addremovelike("Add",img)
+      
+      if(addremovelike("Add",img)){
+        img.Likes++;
+        setLiked(!isLiked);
+      }
     }
-    setLiked(!isLiked);
+    
     
   }
   return (
