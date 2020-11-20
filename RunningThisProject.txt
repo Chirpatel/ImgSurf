@@ -1,4 +1,4 @@
-Step 1: Create a .env file which contents
+Step 1: Create a .env file which contains
 
     REACT_APP_UNSPLASH_SECRET_KEY=xyz(Unsplash API Key)
     REACT_APP_PIXABAY_SECRET_KEY=xyz(Pixabay API Key)
