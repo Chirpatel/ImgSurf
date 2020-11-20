@@ -6,6 +6,7 @@ import Liked from './components/User/Liked';
 import Signup from './components/User/Signup';
 import Login from './components/User/Login';
 import Logout from './components/User/Logout';
+import Profile from './components/User/Profile';
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -30,6 +31,7 @@ function App(){
                 <Route path="/signup" exact component={withRouter(Signup)}/>
                 <Route path="/login" exact component={withRouter(Login)} />
                 <Route path="/logout" exact component={withRouter(Logout)} />
+                <Route path="/profile" exact component={withRouter(Profile)} />
                 <Route path="/" exact component={withRouter(Image)} />
             </Switch>
             

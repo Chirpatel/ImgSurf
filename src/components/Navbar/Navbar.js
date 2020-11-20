@@ -1,14 +1,31 @@
-import React, {useState,useEffect } from 'react'
+import React, {useState,useEffect,Fragment } from 'react'
 import {MenuItems} from "./MenuItems";
 import './Navbar.css';
 import {Button} from "./Button";
 import {Link} from "react-router-dom";
 import ActivateApi from  '../Api/User/ActivateApi.js';
 function Navbar(){
+
     const [clicked,setClick] = useState(false);
     const [loginActive, setActive] = useState(false);
     const [islogedIn, setislogedIn] = useState(false);
     const [user,setUser] =useState({});
+    const [isTop, setIsTop] = useState(false);
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+          return () => window.removeEventListener('scroll', handleScroll);
+      }, []);
+    function handleScroll() {
+      const scrollTop = (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
+      //console.log(scrollTop)
+      if (scrollTop >=1) {
+        setIsTop(true);
+      }else{
+        setIsTop(false);
+      }
+    }
+
+
     const handleClick= ()=>{
       setClick(!clicked )
     }
@@ -43,7 +60,8 @@ function Navbar(){
     })
     
         return(
-            <nav className="NavbarItems" >
+            <Fragment>
+            <nav className={`NavbarItems ${isTop ? "NavbarItemsFixed":""}`} >
                 
                 <h1 className="navbar-logo" onClick={()=>{window.location='/'}}>imgSurf <i className="fas fa-camera"></i></h1>
                 <div className="menu-icon" onClick={handleClick}>
@@ -53,7 +71,7 @@ function Navbar(){
                     {MenuItems.map((item, index)=>{
                         return(
                             <li key={index}>
-                                <Link className={`${item.cName} ${item.title==="Liked" ? (loginActive ? (islogedIn ? "":"display-off not-active") : "not-active"): item.url}`} to={`${item.title==="Sign up" ? (!islogedIn ? item.url:"/logout"): item.url} `}>{`${item.title==="Sign up" ?  (!islogedIn ? item.title:`${user.UserName} `) : item.title}`}{item.title==="Sign up" && islogedIn &&
+                                <Link className={`${item.cName} ${["Liked","Profile"].includes(item.title) ? (loginActive ? (islogedIn ? "":"display-off not-active") : "not-active"): item.url}`} to={`${item.title==="Sign up" ? (!islogedIn ? item.url:"/logout"): item.url} `}>{`${item.title==="Sign up" ?  (!islogedIn ? item.title:`${user.UserName} `) : item.title}`}{item.title==="Sign up" && islogedIn &&
                                 <i className="fas fa-sign-out-alt"></i>}</Link>
                             </li>
                         )
@@ -75,6 +93,7 @@ function Navbar(){
                 }        
                 </Button></Link>
             </nav>
+            </Fragment>
         );
 }
 

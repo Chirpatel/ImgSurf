@@ -87,7 +87,16 @@ const getColumns = (imgarr,col)=>{
     }
   }
   useEffect(()=>{
-    var imgarray = getColumns(imgarr, 4);
+    var cols =4;
+    if(window.innerWidth<=450){
+      cols=1;
+    }
+    else if(window.innerWidth<=640){
+      cols=2;
+    }else if(window.innerWidth<=991){
+      cols=3;
+    }
+    var imgarray = getColumns(imgarr, cols);
     function Sort(a, b){
       if(a.length >= b.length) {
           return -1;

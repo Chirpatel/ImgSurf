@@ -47,3 +47,16 @@
 .display-on{
     display:block;
 }
+
+/* Profile */
+.profile-container{
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+.profile-image img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}

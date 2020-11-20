@@ -4,6 +4,8 @@
   -ms-flex-wrap: wrap; /* IE 10 */
   flex-wrap: wrap;
   padding: 0 4px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 
@@ -154,4 +156,26 @@
   text-align: center;
   margin: 20px auto;
   font-size: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  .popup_inner {
+    left: 10%;
+    right: 10%;
+    height: calc(50%);
+    width: calc(80%);
+}
+.img-div {
+  height: 70%;
+}
+.img-hor {
+  width: 100%;
+  height: 100%;
+}
+}
+
+@media screen and (max-width: 300px) {
+  .img-vert {
+    width: 100%;
+  }
 }

@@ -43,7 +43,6 @@ function Liked(){
     
     return(
         <div className="liked-image-container">
-            <h1>Liked</h1>
             {isLoading &&
                 <h6>Loading</h6>
             }
