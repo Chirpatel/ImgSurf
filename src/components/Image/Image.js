@@ -99,7 +99,7 @@ function Image({query,searched}) {
           setLoading(false)
         }
         else{
-          console.log("Last Function...................................................")
+          //console.log("Last Function...................................................")
           currentPage.current++;
           setLoading(true);
           //console.log("Searched Infinite Page Called.");

@@ -59,8 +59,10 @@ async function dataFormater(type1,type2,data){
 
     else if(type1===2){
         //console.log(data);
+        var blocked=["nude","ass","sex","body"];
         apiData={TotalPage: parseInt(data.total/200)}
             data.hits.forEach((img)=>{
+                if(img.user!=="innamikitas" && !blocked.some(r => img.tags.includes(blocked))){
                 apiDataImg = [...apiDataImg,{ImageId: img.id,
                     ImageDes: img.tags,
                     Download: img.largeImageURL,
@@ -71,6 +73,7 @@ async function dataFormater(type1,type2,data){
                     w: img.imageWidth,
                     h: img.imageHeight,
                     type:type1}]
+                }
             })
     }
     else{
